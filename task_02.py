@@ -7,8 +7,14 @@ import datetime
 
 
 class InvalidAgeError(Exception):
+    """Impossible age class."""
     pass
 
+
 def get_age(birthyear):
+    """An age calculator."""
     age = datetime.datetime.now().year - birthyear
-    return age
+    if birthyear > datetime.datetime.now().year:
+        raise InvalidAgeError
+    else:
+        return age
